@@ -1,22 +1,35 @@
 #include <iostream>
-#include <cstdio>
-#include <cctype>
+
 using namespace std;
 
 int main() {
-	bool hasLetter = false
-		, hasDigit = false;
-	char c;
-	while (cin >> c) {
-		if (isdigit(c)) hasDigit = true;
-		else if (isalpha(c))hasLetter = true;
-	}
-	if (hasDigit && hasLetter) {
-		cout << "mixed";
-	} else if (hasDigit) {
-		cout << "digit";
-	} else {
-		cout << "letter";
+	int T;
+	int n, k;
+	cin >> T;
+	while (T-->0) {
+		cin >> n >> k;
+		int sum = k;
+		for (int i = 2; i <= n; i++) {
+			sum += (i - 1)*i / 2;
+		}
+		cout << sum << endl;
 	}
 	return 0;
 }
+//#include<stdio.h>
+//int main() {
+//	int t;
+//	scanf("%d", &t);
+//	int f[1000];
+//	while (t--) {
+//		int n, k;
+//		scanf("%d%d", &n, &k);
+//		f[1] = k;
+//		int s = 1;
+//		for (int i = 2; i <= n; i++) {
+//			f[i] = f[i - 1] + s;
+//			s += i;
+//		}
+//		printf("%d\n", f[n]);
+//	}
+//}
