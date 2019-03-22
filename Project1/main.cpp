@@ -1,22 +1,32 @@
 #include <iostream>
-
+#include <cstdio>
+#include <cstring>
+#include <cmath>
 using namespace std;
 
-int a[20] = { 0,1,1,1 };
+bool isPrime(int n) {
+	if (n == 1) return 0;
+	if (n == 2) return 1;
+	if (!(n % 2)) return 0;
+	int m = int(sqrt(n)) + 1;
+	for (int i = 3; i < m; i += 2)
+		if (!(n%i)) return 0; 
+	return 1;
+}
+bool isRevered(int n) {
+	char str[15];
+	int len;
+	sprintf(str, "%d", n);
+	len = strlen(str);
+	for (int i = 0; i < (len + 1) / 2; i++) {
+		if (str[i] != str[len - i -1])return 0;
+	}
+	return 1;
+}
 
 int main() {
 	int n;
-	int sum = 0;
 	cin >> n;
-	if (n < 4) {
-		sum = n;
-	} else {
-		sum = 3;
-		for (size_t i = 4; i <= n; i++) {
-			a[i] = a[i - 1] + (a[i - 2] + a[i - 3])*i;
-			sum += a[i];
-		}
-	}
-	cout << sum;
+	cout << (isPrime(n) && isRevered(n) ? "Yes" : "No");
 	return 0;
 }
